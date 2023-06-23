@@ -1,0 +1,31 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+# Set up the WebDriver (Chrome in this case)
+driver = webdriver.Chrome()
+
+# Open Facebook login page
+driver.get("https://www.facebook.com")
+
+# Find the email input field and enter your email
+email_input = driver.find_element_by_id("email")
+email_input.send_keys("your_email@example.com")
+
+# Find the password input field and enter your password
+password_input = driver.find_element_by_id("pass")
+password_input.send_keys("your_password")
+
+# Submit the form by pressing Enter key
+password_input.send_keys(Keys.ENTER)
+
+# Wait for the login process to complete (you can customize the wait time if needed)
+driver.implicitly_wait(10)
+
+# Check if the login was successful
+if "facebook.com" in driver.current_url:
+    print("Login successful!")
+else:
+    print("Login failed!")
+
+# Close the browser
+driver.quit()
